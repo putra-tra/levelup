@@ -1,0 +1,660 @@
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f8e1f4 0%, #f0c8e6 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            color: #5a4a6a;
+        }
+
+        .container {
+            width: 95%;
+            max-width: 900px;
+            height: 90vh;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .slides-container {
+            width: 500%;
+            height: calc(100% - 80px);
+            display: flex;
+            transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .slide {
+            width: 20%;
+            height: 100%;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: #392430;
+            text-shadow: 0 0 10px rgba(95, 70, 85, 0.2);
+            z-index: 2;
+        }
+
+        .slide p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            max-width: 90%;
+            z-index: 2;
+            color: #211f22;
+        }
+
+        .slide-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+        }
+
+        /* Background untuk setiap slide */
+        .slide-1 {
+            background: radial-gradient(circle at 30% 70%, #f8e1f4 0%, #f57ad6 70%);
+        }
+
+        .slide-2 {
+            background: radial-gradient(circle at 70% 30%, #f8e1f4 0%, #f57ad6 70%);
+        }
+
+        .slide-3 {
+            background: radial-gradient(circle at 50% 50%, #f8e1f4 0%, #f57ad6 70%);
+        }
+
+        .slide-4 {
+            background: radial-gradient(circle at 30% 30%, #f8e1f4 0%, #f57ad6 70%);
+        }
+
+        .slide-5 {
+            background: radial-gradient(circle at 70% 70%, #f8e1f4 0%, #f57ad6 70%);
+        }
+
+        /* Efek partikel latar belakang */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(214, 122, 177, 0.2);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); }
+            100% { transform: translateY(-100px) rotate(360deg); }
+        }
+
+        /* Slide 1 - Kue Ulang Tahun Realistis */
+        .cake-container {
+            position: relative;
+            width: 250px;
+            height: 200px;
+            margin: 20px 0;
+            z-index: 2;
+        }
+
+        .cake-base {
+            position: absolute;
+            width: 180px;
+            height: 65px;
+            background: #f8c8dc;
+            bottom: 0;
+            left: 35px;
+            border-radius: 10px 10px 0 0;
+            box-shadow: 
+                inset 0 -10px 0 rgba(0,0,0,0.05),
+                0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .cake-middle {
+            position: absolute;
+            width: 150px;
+            height: 50px;
+            background: #f5b5d1;
+            bottom: 65px;
+            left: 50px;
+            border-radius: 10px 10px 0 0;
+            box-shadow: 
+                inset 0 -8px 0 rgba(0,0,0,0.05),
+                0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .cake-top {
+            position: absolute;
+            width: 120px;
+            height: 40px;
+            background: #f2a2c6;
+            bottom: 115px;
+            left: 65px;
+            border-radius: 10px 10px 0 0;
+            box-shadow: 
+                inset 0 -6px 0 rgba(0,0,0,0.05),
+                0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .frosting {
+            position: absolute;
+            width: 100%;
+            height: 12px;
+            background: #ffd1dc;
+            border-radius: 50%;
+            bottom: 115px;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.05);
+        }
+
+        .candle {
+            position: absolute;
+            width: 10px;
+            height: 40px;
+            background: linear-gradient(to right, #ff9a9e, #fad0c4);
+            bottom: 155px;
+            left: 120px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(255, 154, 158, 0.3);
+        }
+
+        .flame {
+            position: absolute;
+            width: 14px;
+            height: 25px;
+            background: linear-gradient(to bottom, #ffef78, #ff9d00);
+            border-radius: 50% 50% 20% 20%;
+            bottom: 195px;
+            left: 118px;
+            animation: flicker 1.5s infinite alternate;
+            box-shadow: 0 0 15px #ff9d00;
+            z-index: 3;
+        }
+
+        @keyframes flicker {
+            0%, 100% { transform: scale(1) rotate(-2deg); opacity: 1; }
+            50% { transform: scale(1.1) rotate(2deg); opacity: 0.9; }
+        }
+
+        /* Slide 2 - Bunga Realistis */
+        .flower-container {
+            position: relative;
+            width: 180px;
+            height: 180px;
+            margin: 20px 0;
+        }
+
+        .flower-petal {
+            position: absolute;
+            width: 75px;
+            height: 75px;
+            background: linear-gradient(135deg, #ffb6c1, #ffd1dc);
+            border-radius: 50% 50% 40% 40%;
+            opacity: 0.9;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .petal-1 { top: 10px; left: 52px; transform: rotate(0deg); }
+        .petal-2 { top: 45px; left: 15px; transform: rotate(45deg); }
+        .petal-3 { top: 45px; right: 15px; transform: rotate(-45deg); }
+        .petal-4 { bottom: 45px; left: 15px; transform: rotate(135deg); }
+        .petal-5 { bottom: 45px; right: 15px; transform: rotate(-135deg); }
+        .petal-6 { bottom: 10px; left: 52px; transform: rotate(180deg); }
+
+        .flower-center {
+            width: 50px;
+            height: 50px;
+            background: radial-gradient(circle at 30% 30%, #ffd166, #ffb347);
+            border-radius: 50%;
+            position: absolute;
+            top: 65px;
+            left: 65px;
+            box-shadow: 0 0 10px rgba(255, 157, 0, 0.3);
+        }
+
+        .stem {
+            width: 6px;
+            height: 120px;
+            background: linear-gradient(to right, #a8e6a3, #7bc47f);
+            position: absolute;
+            top: 180px;
+            left: 87px;
+            border-radius: 3px;
+        }
+
+        .leaf {
+            width: 35px;
+            height: 18px;
+            background: linear-gradient(135deg, #a8e6a3, #7bc47f);
+            border-radius: 50% 0 50% 0;
+            position: absolute;
+            top: 230px;
+            left: 65px;
+            transform: rotate(-30deg);
+        }
+
+        /* Slide 3 - Hadiah Realistis */
+        .gift-container {
+            position: relative;
+            width: 180px;
+            height: 180px;
+            margin: 20px 0;
+        }
+
+        .gift-box {
+            width: 150px;
+            height: 100px;
+            background: linear-gradient(135deg, #d67ab1, #e594c3);
+            position: absolute;
+            bottom: 40px;
+            left: 15px;
+            border-radius: 10px;
+            box-shadow: 
+                0 10px 20px rgba(0, 0, 0, 0.1),
+                inset 0 -5px 10px rgba(0,0,0,0.05);
+        }
+
+        .gift-lid {
+            width: 170px;
+            height: 35px;
+            background: linear-gradient(135deg, #e594c3, #d67ab1);
+            position: absolute;
+            bottom: 140px;
+            left: 5px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .ribbon {
+            position: absolute;
+            background: #ffd166;
+            box-shadow: 0 0 10px rgba(255, 209, 102, 0.3);
+        }
+
+        .ribbon-vertical {
+            width: 16px;
+            height: 140px;
+            top: 40px;
+            left: 82px;
+        }
+
+        .ribbon-horizontal {
+            width: 150px;
+            height: 16px;
+            top: 100px;
+            left: 15px;
+        }
+
+        .ribbon-bow {
+            width: 35px;
+            height: 35px;
+            background: #ffd166;
+            border-radius: 50%;
+            position: absolute;
+            bottom: 150px;
+            left: 72px;
+            box-shadow: 0 0 10px rgba(255, 209, 102, 0.3);
+        }
+
+        .ribbon-bow:before, .ribbon-bow:after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 25px;
+            background: #ffd166;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(255, 209, 102, 0.3);
+        }
+
+        .ribbon-bow:before {
+            top: 5px;
+            left: -60px;
+            transform: rotate(30deg);
+        }
+
+        .ribbon-bow:after {
+            top: 5px;
+            right: -60px;
+            transform: rotate(-30deg);
+        }
+
+        /* Slide 4 - Pesan Realistis */
+        .message-container {
+            width: 90%;
+            max-width: 500px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 
+                0 10px 25px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255,255,255,0.5);
+            margin: 15px 0;
+            position: relative;
+            border: 1px solid rgba(214, 122, 177, 0.2);
+            backdrop-filter: blur(5px);
+        }
+
+        .message-container p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 12px;
+            text-align: left;
+            color: #6b5b7a;
+        }
+
+        .signature {
+            text-align: right;
+            font-style: italic;
+            margin-top: 15px;
+            color: #d67ab1;
+            font-weight: bold;
+        }
+
+        .stamp {
+            position: absolute;
+            bottom: 15px;
+            left: 25px;
+            width: 50px;
+            height: 50px;
+            border: 2px dashed #d67ab1;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #d67ab1;
+            font-size: 0.7rem;
+            transform: rotate(-15deg);
+        }
+
+        /* Slide 5 - Game Realistis */
+        .game-container {
+            width: 95%;
+            height: 65%;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 20px;
+            padding: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(214, 122, 177, 0.2);
+            backdrop-filter: blur(5px);
+        }
+
+        .game-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #d67ab1;
+        }
+
+        .game-instructions {
+            font-size: 1rem;
+            margin-bottom: 15px;
+            text-align: center;
+            color: #6b5b7a;
+        }
+
+        .game-area {
+            width: 100%;
+            height: 70%;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid rgba(214, 122, 177, 0.2);
+        }
+
+        .balloon {
+            position: absolute;
+            width: 45px;
+            height: 60px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: transform 0.2s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+            box-shadow: inset 0 -10px 10px rgba(0,0,0,0.1);
+            animation: floatUp 5s linear forwards;
+        }
+
+        .balloon:after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            height: 35px;
+            background: rgba(255,255,255,0.5);
+            bottom: -35px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(100%); }
+            100% { transform: translateY(-100px); }
+        }
+
+        .game-stats {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-top: 12px;
+            font-size: 1.1rem;
+            color: #6b5b7a;
+        }
+
+        .game-button {
+            background: linear-gradient(135deg, #d67ab1, #e594c3);
+            color: white;
+            border: none;
+            padding: 10px 30px;
+            border-radius: 30px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(214, 122, 177, 0.3);
+        }
+
+        .game-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(214, 122, 177, 0.4);
+        }
+
+        /* Navigasi */
+        .navigation {
+            height: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.8);
+            border-top: 1px solid rgba(214, 122, 177, 0.2);
+            backdrop-filter: blur(5px);
+        }
+
+        .nav-button {
+            background: linear-gradient(135deg, #d67ab1, #e594c3);
+            color: white;
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            margin: 0 10px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.3rem;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(214, 122, 177, 0.3);
+        }
+
+        .nav-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(214, 122, 177, 0.4);
+        }
+
+        .nav-button:disabled {
+            background: rgba(200, 200, 200, 0.5);
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .slide-indicators {
+            display: flex;
+            margin: 0 15px;
+        }
+
+        .indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(214, 122, 177, 0.3);
+            margin: 0 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .indicator.active {
+            background: #d67ab1;
+            transform: scale(1.2);
+            box-shadow: 0 0 8px #d67ab1;
+        }
+
+        /* Efek konfeti */
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 20px;
+            opacity: 0;
+            z-index: 100;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Responsif untuk ponsel */
+        @media (max-width: 768px) {
+            .container {
+                height: 95vh;
+                width: 98%;
+            }
+            
+            .slide {
+                padding: 15px;
+            }
+            
+            .slide h1 {
+                font-size: 1.8rem;
+                margin-bottom: 10px;
+            }
+            
+            .slide p {
+                font-size: 1rem;
+                margin-bottom: 15px;
+            }
+            
+            .nav-button {
+                width: 40px;
+                height: 40px;
+                margin: 0 8px;
+                font-size: 1.1rem;
+            }
+            
+            .cake-container, .flower-container, .gift-container {
+                transform: scale(0.7);
+                margin: 10px 0;
+            }
+            
+            .message-container {
+                padding: 20px;
+            }
+            
+            .game-container {
+                height: 70%;
+                padding: 10px;
+            }
+            
+            .game-title {
+                font-size: 1.3rem;
+            }
+            
+            .game-instructions {
+                font-size: 0.9rem;
+            }
+            
+            .balloon {
+                width: 40px;
+                height: 55px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .slide h1 {
+                font-size: 1.5rem;
+            }
+            
+            .slide p {
+                font-size: 0.9rem;
+            }
+            
+            .cake-container, .flower-container, .gift-container {
+                transform: scale(0.6);
+            }
+            
+            .message-container {
+                padding: 15px;
+            }
+            
+            .message-container p {
+                font-size: 0.95rem;
+            }
+            
+            .game-container {
+                height: 75%;
+            }
+            
+            .game-stats {
+                font-size: 1rem;
+            }
+            
+            .game-button {
+                padding: 8px 25px;
+                font-size: 0.9rem;
+            }
+        }

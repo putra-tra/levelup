@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ucapan Ulang Tahun Spesial</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styleshet.css">
+</head>
+<body>
+    <div class="container">
+        <div class="slides-container">
+            <!-- Slide 1: Kue Ulang Tahun -->
+            <div class="slide slide-1">
+                <div class="particles" id="particles-1"></div>
+                <div class="slide-content">
+                    <h1>Happy Birthday salsabila putri khoiri swanda💐</h1>
+                    <h4>Semoga pada hari spesialmu ini, kamu dipenuhi dengan kebahagiaan, tawa, dan keceriaan yaa</h4>
+                    <div class="cake-container">
+                        <div class="cake-base"></div>
+                        <div class="cake-middle"></div>
+                        <div class="cake-top"></div>
+                        <div class="frosting"></div>
+                        <div class="candle"></div>
+                        <div class="flame"></div>
+                    </div>
+                    <p>tekan tombol di  bawah untuk lihat selanjutnyaa</p>
+                </div>
+            </div>
+            
+            <!-- Slide 2: Bunga -->
+            <div class="slide slide-2">
+                <div class="particles" id="particles-2"></div>
+                <div class="slide-content">
+                    <h1>Hari Ini</h1>
+                    <h4>salsabila putri khoiri swanda, kamu seperti bunga yang mekar, semoga hidupmu selalu penuh dengan keindahan dan harapan</h4>
+                    <div class="flower-container">
+                        <div class="flower-petal petal-1"></div>
+                        <div class="flower-petal petal-2"></div>
+                        <div class="flower-petal petal-3"></div>
+                        <div class="flower-petal petal-4"></div>
+                        <div class="flower-petal petal-5"></div>
+                        <div class="flower-petal petal-6"></div>
+                        <div class="flower-center"></div>
+                        <div class="stem"></div>
+                        <div class="leaf"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 3: Hadiah -->
+            <div class="slide slide-3">
+                <div class="particles" id="particles-3"></div>
+                <div class="slide-content">
+                    <h1>Apa Kataku?</h1>
+                    <h4>Bukan hanya hadiah materi, tapi juga doa tulus untuk kebahagiaanmu</h4>
+                    <div class="gift-container">
+                        <div class="gift-box"></div>
+                        <div class="gift-lid"></div>
+                        <div class="ribbon ribbon-vertical"></div>
+                        <div class="ribbon ribbon-horizontal"></div>
+                        <div class="ribbon-bow"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 4: Pesan -->
+            <div class="slide slide-4">
+                <div class="particles" id="particles-4"></div>
+                        <div class="slide-content">
+                    <h1>Pesan Dari Hatiku</h1>
+                    <div class="message-container">
+                        <p>Di hari ulang tahunmu ini, aku ingin mengucapkan</p>
+                        <p>Semoga setiap langkahmu diberkahi, setiap impianmu tercapai, dan setiap harapanmu menjadi kenyataan.</p>
+                        <p>Teruslah menjadi pribadi yang luar biasa dan inspiratif bagi orang-orang di sekitarmu.</p>
+                        <p>Jangan pernah berhenti bermimpi dan berusaha, karena dunia membutuhkan cahayamu.</p>
+                        <div class="signature">Dengan penuh kasih sayang,<br>Alyaaa</div>
+                        <div class="stamp">SPECIAL</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 5: Game -->
+            <div class="slide slide-5">
+                <div class="particles" id="particles-5"></div>
+                <div class="slide-content">
+                    <h1>Cobain Permainan yang ku buat untukmu yuk</h1>
+                    <p>Pecahkan balon sebanyak-banyaknya sebelum waktu habis ya!</p>
+                    
+                    <div class="game-container">
+                        <div class="game-title">Balon Kejutan</div>
+                        <div class="game-instructions">nanti click pada balon yang muncul dan lihat berapa Skormu</div>
+                        
+                        <div class="game-area" id="gameArea">
+                            <!-- Balon akan muncul di sini secara dinamis -->
+                        </div>
+                        
+                        <div class="game-stats">
+                            <div>Waktu: <span id="timeLeft">30</span>s</div>
+                            <div>Poin: <span id="score">0</span></div>
+                        </div>
+                        
+                        <button class="game-button" id="startGame">Mulai Game</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="navigation">
+            <button class="nav-button" id="prevBtn" disabled>
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            
+            <div class="slide-indicators">
+                <div class="indicator active" data-slide="0"></div>
+                <div class="indicator" data-slide="1"></div>
+                <div class="indicator" data-slide="2"></div>
+                <div class="indicator" data-slide="3"></div>
+                <div class="indicator" data-slide="4"></div>
+            </div>
+            
+            <button class="nav-button" id="nextBtn">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Variabel untuk navigasi slide
+        const slidesContainer = document.querySelector('.slides-container');
+        const indicators = document.querySelectorAll('.indicator');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        let currentSlide = 0;
+        const totalSlides = 5;
+
+        // Fungsi untuk membuat partikel latar belakang
+        function createParticles(containerId, count) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+            
+            for (let i = 0; i < count; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                // Ukuran acak
+                const size = Math.random() * 5 + 1;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                // Posisi acak
+                particle.style.left = `${Math.random() * 100}%`;
+                
+                // Warna acak
+                const colors = ['rgba(214, 122, 177, 0.3)', 'rgba(255, 209, 102, 0.3)', 'rgba(255, 182, 193, 0.3)'];
+                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                
+                // Animasi dengan durasi acak
+                const duration = Math.random() * 20 + 10;
+                const delay = Math.random() * 5;
+                particle.style.animation = `float ${duration}s infinite linear`;
+                particle.style.animationDelay = `${delay}s`;
+                
+                container.appendChild(particle);
+            }
+        }
+
+        // Fungsi untuk mengubah slide
+        function goToSlide(slideIndex) {
+            if (slideIndex < 0 || slideIndex >= totalSlides) return;
+            
+            currentSlide = slideIndex;
+            slidesContainer.style.transform = `translateX(-${currentSlide * 20}%)`;
+            
+            // Update indikator
+            indicators.forEach((indicator, index) => {
+                if (index === currentSlide) {
+                    indicator.classList.add('active');
+                } else {
+                    indicator.classList.remove('active');
+                }
+            });
+            
+            // Update status tombol
+            prevBtn.disabled = currentSlide === 0;
+            nextBtn.disabled = currentSlide === totalSlides - 1;
+            
+            // Jika di slide game, setup game
+            if (currentSlide === 4) {
+                setupGame();
+            }
+        }
+
+        // Event listener untuk tombol navigasi
+        prevBtn.addEventListener('click', () => goToSlide(currentSlide - 1));
+        nextBtn.addEventListener('click', () => goToSlide(currentSlide + 1));
+
+        // Event listener untuk indikator
+        indicators.forEach(indicator => {
+            indicator.addEventListener('click', () => {
+                const slideIndex = parseInt(indicator.getAttribute('data-slide'));
+                goToSlide(slideIndex);
+            });
+        });
+
+        // Variabel untuk game
+        let gameScore = 0;
+        let gameTimeLeft = 30;
+        let gameTimer;
+        let gameActive = false;
+        const gameArea = document.getElementById('gameArea');
+        const scoreElement = document.getElementById('score');
+        const timeLeftElement = document.getElementById('timeLeft');
+        const startGameBtn = document.getElementById('startGame');
+
+        // Fungsi untuk setup game
+        function setupGame() {
+            gameScore = 0;
+            gameTimeLeft = 30;
+            scoreElement.textContent = gameScore;
+            timeLeftElement.textContent = gameTimeLeft;
+            gameArea.innerHTML = '';
+            gameActive = false;
+            clearInterval(gameTimer);
+        }
+
+        // Fungsi untuk memulai game
+        function startGame() {
+            if (gameActive) return;
+            
+            setupGame();
+            gameActive = true;
+            startGameBtn.disabled = true;
+            
+            // Timer game
+            gameTimer = setInterval(() => {
+                gameTimeLeft--;
+                timeLeftElement.textContent = gameTimeLeft;
+                
+                if (gameTimeLeft <= 0) {
+                    endGame();
+                }
+            }, 1000);
+            
+            // Membuat balon secara berkala
+            const balloonInterval = setInterval(() => {
+                if (!gameActive) {
+                    clearInterval(balloonInterval);
+                    return;
+                }
+                
+                createBalloon();
+            }, 800);
+        }
+
+        // Fungsi untuk membuat balon di game
+        function createBalloon() {
+            const balloon = document.createElement('div');
+            balloon.className = 'balloon';
+            
+            // Warna acak untuk balon
+            const colors = [
+                'linear-gradient(135deg, #ffb6c1, #ffd1dc)',
+                'linear-gradient(135deg, #d67ab1, #e594c3)',
+                'linear-gradient(135deg, #a8e6a3, #7bc47f)',
+                'linear-gradient(135deg, #87ceeb, #6495ed)',
+                'linear-gradient(135deg, #ffd166, #ffb347)'
+            ];
+            balloon.style.background = colors[Math.floor(Math.random() * colors.length)];
+            
+            // Posisi acak
+            const maxX = gameArea.offsetWidth - 50;
+            const x = Math.floor(Math.random() * maxX);
+            
+            balloon.style.left = `${x}px`;
+            
+            // Durasi animasi acak
+            const duration = Math.random() * 3 + 3;
+            balloon.style.animation = `floatUp ${duration}s linear forwards`;
+            
+            // Event listener untuk klik balon
+            balloon.addEventListener('click', () => {
+                if (!gameActive) return;
+                
+                gameScore++;
+                scoreElement.textContent = gameScore;
+                
+                // Animasi balon pecah
+                balloon.style.transform = 'scale(1.5)';
+                balloon.style.opacity = '0';
+                
+                setTimeout(() => {
+                    if (balloon.parentNode) {
+                        balloon.parentNode.removeChild(balloon);
+                    }
+                }, 300);
+            });
+            
+            gameArea.appendChild(balloon);
+            
+            // Hapus balon setelah animasi selesai
+            setTimeout(() => {
+                if (balloon.parentNode) {
+                    balloon.parentNode.removeChild(balloon);
+                }
+            }, duration * 1000);
+        }
+
+        // Fungsi untuk mengakhiri game
+        function endGame() {
+            gameActive = false;
+            clearInterval(gameTimer);
+            startGameBtn.disabled = false;
+            
+            // Tampilkan pesan hasil
+            const message = document.createElement('div');
+            message.style.cssText = `
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: rgba(255, 255, 255, 0.95);
+                padding: 20px;
+                border-radius: 15px;
+                text-align: center;
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+                z-index: 10;
+                width: 80%;
+                border: 1px solid rgba(214, 122, 177, 0.3);
+                backdrop-filter: blur(10px);
+                color: #6b5b7a;
+            `;
+            
+            let resultText = '';
+            if (gameScore >= 25) {
+                resultText = 'Luar biasa! Kamu ahli memecahkan balon!';
+            } else if (gameScore >= 20) {
+                resultText = 'Hebat! Skormu sangat baik!';
+            } else if (gameScore >= 15) {
+                resultText = 'Bagus! Terus berlatih ya!';
+            } else {
+                resultText = 'Coba lagi, kamu pasti bisa lebih baik!';
+            }
+            
+            message.innerHTML = `
+                <h3 style="color: #d67ab1; margin-bottom: 15px;">Game Selesai!</h3>
+                <p style="margin-bottom: 10px;">Skor akhir: <strong>${gameScore}</strong></p>
+                <p>${resultText}</p>
+                <button class="game-button" onclick="this.parentNode.remove()" style="margin-top: 15px;">Tutup</button>
+            `;
+            
+            gameArea.appendChild(message);
+            
+            // Buat konfeti
+            createConfetti();
+        }
+
+        // Fungsi untuk membuat efek konfeti
+        function createConfetti() {
+            const colors = ['#ffb6c1', '#d67ab1', '#a8e6a3', '#87ceeb', '#ffd166'];
+            
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.left = `${Math.random() * 100}%`;
+                confetti.style.width = `${Math.random() * 10 + 5}px`;
+                confetti.style.height = `${Math.random() * 15 + 10}px`;
+                confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+                confetti.style.animation = `fall ${Math.random() * 3 + 2}s linear forwards`;
+                confetti.style.animationDelay = `${Math.random() * 2}s`;
+                
+                document.body.appendChild(confetti);
+                
+                // Hapus konfeti setelah animasi selesai
+                setTimeout(() => {
+                    if (confetti.parentNode) {
+                        confetti.parentNode.removeChild(confetti);
+                    }
+                }, 5000);
+            }
+        }
+
+        // Event listener untuk tombol mulai game
+        startGameBtn.addEventListener('click', startGame);
+
+        // Inisialisasi
+        goToSlide(0);
+        
+        // Buat partikel untuk setiap slide
+        for (let i = 1; i <= 5; i++) {
+            createParticles(`particles-${i}`, 30);
+        }
+    </script>
+</body>
+</html>
